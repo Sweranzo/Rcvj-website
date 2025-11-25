@@ -81,19 +81,18 @@ router.put('/:id', async (req, res) => {
 // APPLY FOR JOB
 // ----------------------------------------------
 router.post('/apply', upload.single('resume'), async (req, res) => {
-
     console.log('📥 Application received:', {
-    name: req.body.name,
-    email: req.body.email, 
-    phone: req.body.phone,
-    job_title: req.body.job_title,
-    job_company: req.body.job_company,
-    job_id: req.body.job_id,
-    hasFile: !!req.file
-});
+        name: req.body.name,
+        email: req.body.email, 
+        phone: req.body.phone,
+        jobTitle: req.body.jobTitle,
+        jobCompany: req.body.jobCompany,
+        jobId: req.body.jobId,
+        hasFile: !!req.file
+    });
 
     try {
-        const { name, email, phone, cover_letter, job_title, job_company, job_id } = req.body;
+        const { name, email, phone, cover_letter, jobTitle, jobCompany, jobId } = req.body;
 
         if (!name || !email || !phone || !req.file) {
             return res.status(400).json({
@@ -119,9 +118,9 @@ router.post('/apply', upload.single('resume'), async (req, res) => {
 
         const result = await db.query(saveQuery, [
             applicationId,
-            job_id || null,
-            job_title || '',
-            job_company || '',
+            jobId || null,
+            jobTitle || '',
+            jobCompany || '',
             name,
             email,
             phone,

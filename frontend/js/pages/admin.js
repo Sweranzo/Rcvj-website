@@ -606,7 +606,7 @@ class AdminManager {
         }
 
         // Build download URL (static serve)
-        const downloadUrl = `${location.origin}/uploads/${application.resume_filename}`;
+        const downloadUrl = `https://rcvj-company.onrender.com/uploads/${application.resume_filename}`;
         const link = document.createElement('a');
         link.href = downloadUrl;
         // safe filename

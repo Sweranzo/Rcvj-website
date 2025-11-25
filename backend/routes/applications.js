@@ -36,46 +36,45 @@ const upload = multer({
 // ----------------------------------------------
 // DELETE APPLICATION
 // ----------------------------------------------
-router.delete('/:id', (req, res) => {
-    const applicationId = req.params.id;
-
-    const query = `DELETE FROM applications WHERE application_id = ?`;
-
-    db.execute(query, [applicationId], (err, result) => {
-        if (err) {
-            console.error('Delete error:', err);
-            return res.status(500).json({ error: 'Failed to delete application' });
-        }
-
-        if (result.affectedRows === 0) {
+router.delete('/:id', async (req, res) => {
+    try {
+        const applicationId = req.params.id;
+        const query = `DELETE FROM applications WHERE application_id = $1`;
+        
+        const result = await db.query(query, [applicationId]);
+        
+        if (result.rowCount === 0) {
             return res.status(404).json({ error: 'Application not found' });
         }
 
         res.json({ success: true, message: 'Application deleted successfully' });
-    });
+    } catch (err) {
+        console.error('Delete error:', err);
+        res.status(500).json({ error: 'Failed to delete application' });
+    }
 });
 
 // ----------------------------------------------
 // UPDATE STATUS
 // ----------------------------------------------
-router.put('/:id/status', (req, res) => {
-    const applicationId = req.params.id;
-    const { status } = req.body;
+router.put('/:id', async (req, res) => {
+    try {
+        const applicationId = req.params.id;
+        const { status, notes } = req.body;
 
-    if (!status) {
-        return res.status(400).json({ error: 'Status is required' });
-    }
-
-    const query = `UPDATE applications SET status = ? WHERE application_id = ?`;
-
-    db.execute(query, [status, applicationId], (err, result) => {
-        if (err) {
-            console.error('Status update error:', err);
-            return res.status(500).json({ error: 'Failed to update status' });
+        if (!status) {
+            return res.status(400).json({ error: 'Status is required' });
         }
 
-        res.json({ success: true, message: 'Status updated successfully' });
-    });
+        const query = `UPDATE applications SET status = $1, notes = $2 WHERE application_id = $3 RETURNING *`;
+        
+        const result = await db.query(query, [status, notes, applicationId]);
+        
+        res.json({ success: true, message: 'Status updated successfully', application: result.rows[0] });
+    } catch (err) {
+        console.error('Status update error:', err);
+        res.status(500).json({ error: 'Failed to update status' });
+    }
 });
 
 // ----------------------------------------------
@@ -83,7 +82,7 @@ router.put('/:id/status', (req, res) => {
 // ----------------------------------------------
 router.post('/apply', upload.single('resume'), async (req, res) => {
     try {
-        const { name, email, phone, coverLetter, jobTitle, jobCompany, jobId } = req.body;
+        const { name, email, phone, cover_letter, job_title, job_company, job_id } = req.body;
 
         if (!name || !email || !phone || !req.file) {
             return res.status(400).json({
@@ -104,61 +103,51 @@ router.post('/apply', upload.single('resume'), async (req, res) => {
                 applicant_phone,
                 cover_letter,
                 resume_filename
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *
         `;
 
-        db.execute(saveQuery, [
+        const result = await db.query(saveQuery, [
             applicationId,
-            jobId || null,
-            jobTitle || '',
-            jobCompany || '',
+            job_id || null,
+            job_title || '',
+            job_company || '',
             name,
             email,
             phone,
-            coverLetter || '',
+            cover_letter || '',
             req.file.filename
-        ], (err, result) => {
-            if (err) {
-                console.error('DB Insert Error:', err);
+        ]);
 
-                // Remove uploaded file if DB failed
-                if (req.file && fs.existsSync(req.file.path)) {
-                    fs.unlinkSync(req.file.path);
-                }
-
-                return res.status(500).json({ error: 'Failed to save application' });
-            }
-
-            return res.json({
-                success: true,
-                applicationId,
-                message: 'Application submitted successfully!'
-            });
+        res.json({
+            success: true,
+            applicationId,
+            message: 'Application submitted successfully!',
+            application: result.rows[0]
         });
 
     } catch (err) {
         console.error('Application error:', err);
 
+        // Remove uploaded file if DB failed
         if (req.file && fs.existsSync(req.file.path)) {
             fs.unlinkSync(req.file.path);
         }
 
-        return res.status(500).json({ error: 'Unexpected error occurred' });
+        res.status(500).json({ error: 'Failed to save application' });
     }
 });
 
 // ----------------------------------------------
 // GET ALL APPLICATIONS
 // ----------------------------------------------
-router.get('/', (req, res) => {
-    db.execute(`SELECT * FROM applications ORDER BY applied_at DESC`, (err, rows) => {
-        if (err) {
-            console.error('Fetch applications error:', err);
-            return res.status(500).json({ error: 'Failed to fetch applications' });
-        }
-
-        res.json(rows);
-    });
+router.get('/', async (req, res) => {
+    try {
+        const result = await db.query(`SELECT * FROM applications ORDER BY applied_at DESC`);
+        res.json(result.rows);
+    } catch (err) {
+        console.error('Fetch applications error:', err);
+        res.status(500).json({ error: 'Failed to fetch applications' });
+    }
 });
 
 module.exports = router;

@@ -110,6 +110,7 @@
         font-weight: 700;
         animation: caretBlink 0.7s infinite;
         min-height: 100px;
+        
     }
 
     .typewriter-text {

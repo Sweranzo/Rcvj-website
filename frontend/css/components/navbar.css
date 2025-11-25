@@ -78,8 +78,11 @@
 
 @media (max-width: 768px) {
     .menu-toggle {
+     
         display: block;
         color: white;
+     
+       
     }
 
     .nav-links {
@@ -88,14 +91,17 @@
         top: 100%;
         left: 0;
         width: 100%;
-        background: rgba(0, 0, 0, 0.288);
+        background: transparent;
+        backdrop-filter: blur(100px);
         flex-direction: column;
         padding: 1rem 0;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        
     }
 
     .nav-links.active {
         display: flex;
+        
     }
 
     .hero-content h1 {

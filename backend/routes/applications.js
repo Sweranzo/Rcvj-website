@@ -81,6 +81,17 @@ router.put('/:id', async (req, res) => {
 // APPLY FOR JOB
 // ----------------------------------------------
 router.post('/apply', upload.single('resume'), async (req, res) => {
+
+    console.log('📥 Application received:', {
+    name: req.body.name,
+    email: req.body.email, 
+    phone: req.body.phone,
+    job_title: req.body.job_title,
+    job_company: req.body.job_company,
+    job_id: req.body.job_id,
+    hasFile: !!req.file
+});
+
     try {
         const { name, email, phone, cover_letter, job_title, job_company, job_id } = req.body;
 

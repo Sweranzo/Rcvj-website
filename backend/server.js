@@ -4,6 +4,14 @@ require('dotenv').config();
 
 const app = express();
 
+app.get('/', (req, res) => {
+  res.json({
+    message: 'RCVJ COMPANY Backend API is Working!',
+    status: 'Live 🚀',
+    database: 'Connected ✅'
+  });
+});
+
 // Middleware
 app.use(cors());
 app.use(express.json());

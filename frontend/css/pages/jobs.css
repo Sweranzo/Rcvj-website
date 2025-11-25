@@ -1,0 +1,420 @@
+/* Jobs Page Styles */
+.page-header {
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    background-size: 300% 300%;
+    animation: gradientMove 8s ease infinite;
+    color: var(--white);
+    padding: 120px 0 60px;
+    text-align: center;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+.page-header h1 {
+    color: var(--white);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Job Filters */
+.job-filters {
+    background: var(--white);
+    padding: 2rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-grid {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1.5fr auto;
+    gap: 1rem;
+    align-items: end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+.filter-group input,
+.filter-group select {
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    width: 100%;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+#search-btn {
+    white-space: nowrap;
+}
+
+/* Jobs Header */
+.jobs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.jobs-header h2 {
+    color: var(--secondary-color);
+    margin: 0;
+}
+
+.jobs-count {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Jobs Grid */
+.jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+.job-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--primary-color);
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.job-card-header {
+    margin-bottom: 1.5rem;
+}
+
+.job-title {
+    font-size: 1.4rem;
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.job-company {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.job-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.job-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.job-meta-item i {
+    color: var(--primary-color);
+}
+
+.job-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.job-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.job-tag {
+    background: rgba(230, 120, 21, 0.1);
+    color: var(--primary-color);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.job-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.view-job-btn {
+    flex: 1;
+    background: var(--secondary-color);
+    color: var(--white);
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.view-job-btn:hover {
+    background: rgba(41, 21, 113, 0.9);
+}
+
+.quick-apply-btn {
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s ease;
+}
+
+.quick-apply-btn:hover {
+    background: rgba(230, 120, 21, 0.9);
+}
+
+/* Loading State */
+.loading {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+    font-size: 1.1rem;
+    grid-column: 1 / -1;
+}
+
+/* No Jobs Message */
+.no-jobs {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #666;
+    grid-column: 1 / -1;
+}
+
+.no-jobs i {
+    font-size: 4rem;
+    color: #ddd;
+    margin-bottom: 1rem;
+}
+
+.no-jobs h3 {
+    color: #666;
+    margin-bottom: 1rem;
+}
+/*partners section */
+
+.partners-section {
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 30px;
+margin-top: 20px;
+
+}
+
+
+.partners-title {
+font-size: 2rem;
+font-weight: 700;
+color:white;
+text-align: center;
+margin-bottom: 10px;
+}
+
+
+/* Slider wrapper */
+.partners-slider {
+width: 100%;
+max-width: 1200px;
+min-height: 150px;
+padding: 20px;
+overflow: hidden;
+position: relative;
+border-radius: 50%;
+
+}
+
+
+/* Slider track */
+.slide-track {
+display: flex;
+width: calc(250px * 10);
+animation: scroll 20s linear infinite;
+}
+
+
+/* Individual slide */
+.slide {
+width: 250px;
+height: 120px;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 20px;
+opacity: 0.9;
+transition: all 0.3s ease;
+}
+
+
+.slide img {
+width: 150px;
+border-radius: 100%;
+transition: 0.3s ease;
+}
+
+
+/* Hover effect */
+.slide img:hover {
+filter: grayscale(0%);
+opacity: 1;
+transform: scale(1.1);
+}
+
+/*follower*/
+.png-emoji-container {
+display: flex;
+flex-direction: column;
+justify-content: center;
+text-align: center;
+position: relative;
+width: 140px;
+
+padding: 10px;
+align-items: center;
+margin: 20px auto;
+
+}
+
+
+.png-emoji {
+width: 100%;
+height: 100%;
+animation: floaty 3s ease-in-out infinite;
+}
+
+
+/* Floating animation */
+@keyframes floaty {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(-6px); }
+}
+
+
+/* Eyes placed over PNG (adjust positions depending on PNG face) */
+.png-eye {
+width: 28px;
+height: 28px;
+background: #ffffff;
+border-radius: 50%;
+position: absolute;
+overflow: hidden;
+}
+
+
+/* You may need to adjust these positions based on your PNG */
+.png-left-eye { left: 38px; top: 50px; }
+.png-right-eye { right: 38px; top: 50px; }
+
+
+.png-pupil {
+width: 13px;
+height: 13px;
+background: #000;
+border-radius: 50%;
+position: absolute;
+top: 8px;
+left: 8px;
+transition: transform 0.12s ease-out;
+}
+/* Animation */
+@keyframes scroll {
+0% { transform: translateX(0); }
+100% { transform: translateX(calc(-250px * 5)); }
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .png-emoji-container {
+        display: none;
+    }
+    .jobs-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .filter-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .jobs-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+    
+    .job-card {
+        padding: 1.5rem;
+    }
+    
+    .job-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .job-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .job-tags {
+        gap: 0.3rem;
+    }
+    
+    .job-tag {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+}

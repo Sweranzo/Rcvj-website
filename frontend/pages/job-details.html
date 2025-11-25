@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Details - RCVJ COMPANY</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages/job-details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+     <link rel="stylesheet" href="../css/components/footer.css">
+</head>
+<body>
+ 
+
+    <!-- Job Details Section -->
+    <section class="job-details-section section-padding">
+        <div class="container">
+            <a href="jobs.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Jobs
+            </a>
+            
+            <div class="job-details-card">
+                <div class="job-header">
+                    <h1 id="job-title">Loading...</h1>
+                    <div class="job-company" id="job-company"></div>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> <span id="job-location"></span></span>
+                        <span><i class="fas fa-clock"></i> <span id="job-type"></span></span>
+                        <span><i class="fas fa-money-bill-wave"></i> <span id="job-salary"></span></span>
+                    </div>
+                </div>
+
+                <div class="job-content">
+                    <div class="job-description">
+                        <h3>Job Description</h3>
+                        <p id="job-description-text"></p>
+                    </div>
+
+                    <div class="job-requirements">
+                        <h3>Requirements</h3>
+                        <div id="job-requirements-text"></div>
+                    </div>
+
+                    <div class="job-responsibilities">
+                        <h3>Responsibilities</h3>
+                        <div id="job-responsibilities-text"></div>
+                    </div>
+
+                    <!-- Application Form Section -->
+                    <div class="application-section">
+                        <h3>Apply for This Position</h3>
+                        
+                        <form id="application-form" class="application-form">
+                            <input type="hidden" id="apply-job-title">
+                            <input type="hidden" id="apply-job-company">
+                            <input type="hidden" id="apply-job-id">
+                            
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="applicant-name">Full Name *</label>
+                                    <input type="text" id="applicant-name" name="name" required>
+                                    <div class="error-message" id="name-error"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="applicant-email">Email Address *</label>
+                                    <input type="email" id="applicant-email" name="email" required>
+                                    <div class="error-message" id="email-error"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="applicant-phone">Phone Number *</label>
+                                    <input type="tel" id="applicant-phone" name="phone" required>
+                                    <div class="error-message" id="phone-error"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="applicant-resume">Resume *</label>
+                                    <div class="file-upload">
+                                        <input type="file" id="applicant-resume" name="resume" accept=".pdf,.doc,.docx" required>
+                                        <label for="applicant-resume" class="file-upload-label">
+                                            <i class="fas fa-upload"></i>
+                                            <span class="file-text">Choose file (PDF, DOC, DOCX - max 5MB)</span>
+                                        </label>
+                                    </div>
+                                    <div class="error-message" id="resume-error"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="applicant-coverletter">Cover Letter (Optional)</label>
+                                <textarea id="applicant-coverletter" name="coverLetter" rows="5" 
+                                         placeholder="Tell us why you're interested in this position..."></textarea>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary apply-btn">
+                                    <span class="btn-text">
+                                        <i class="fas fa-paper-plane"></i> Submit Application
+                                    </span>
+                                    <div class="btn-loading" style="display: none;">
+                                        <i class="fas fa-spinner fa-spin"></i> Submitting...
+                                    </div>
+                                </button>
+                            </div>
+                            
+                            <p class="form-note">
+                                By applying, you agree to our privacy policy. We will contact you via email or phone.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RCVJ COMPANY</h3>
+                    <p>Your trusted manpower solution partner since 1992</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="jobs.html">Jobs</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +63 XXX-XXXX-XXX</p>
+                    <p><i class="fas fa-envelope"></i> info@rcvjcompany.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RCVJ COMPANY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+   
+    <script src="../js/main.js"></script>
+    <script src="../js/pages/job-details.js"></script>
+</body>
+</html>

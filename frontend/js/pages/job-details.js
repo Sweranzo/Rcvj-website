@@ -88,6 +88,12 @@ formData.append("job_title", document.getElementById("apply-job-title").value);
 formData.append("job_company", document.getElementById("apply-job-company").value);
 formData.append("job_id", document.getElementById("apply-job-id").value);
 
+// Debug: Check what's in formData
+console.log('FormData contents:');
+for (let pair of formData.entries()) {
+    console.log(pair[0] + ': ' + pair[1]);
+}
+
         if (!this.validateApplicationForm(formData)) return;
 
         this.setFormLoading(submitBtn, true);

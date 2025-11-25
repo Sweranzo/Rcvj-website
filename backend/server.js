@@ -4,6 +4,11 @@ require('dotenv').config();
 
 const app = express();
 
+app.use(cors({
+    origin: ['https://subtle-swan-ff6440.netlify.app', 'http://localhost:3000'],
+    credentials: true
+}));
+
 app.get('/', (req, res) => {
   res.json({
     message: 'RCVJ COMPANY Backend API is Working!',

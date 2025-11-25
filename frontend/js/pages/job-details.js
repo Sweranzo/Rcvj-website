@@ -21,7 +21,8 @@ class JobDetailsManager {
 
     async loadJobDetails() {
         try {
-            const response = await fetch(`http://localhost:3000/api/jobs/${this.jobId}`);
+            const response = await fetch(`https://rcvj-company.onrender.com/api/jobs/${this.jobId}`);
+           /*  const response = await fetch(`http://localhost:3000/api/jobs/${this.jobId}`); */
 
             if (!response.ok) throw new Error("Job not found");
 
@@ -92,7 +93,7 @@ class JobDetailsManager {
         this.setFormLoading(submitBtn, true);
 
         try {
-            const response = await fetch("http://localhost:3000/api/applications/apply", {
+           const response = await fetch("https://rcvj-company.onrender.com/api/applications/apply", {
                 method: "POST",
                 body: formData
             });

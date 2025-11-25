@@ -1,7 +1,7 @@
 // admin.js (rewritten)
 // API Base URL
-const API_BASE_URL = 'http://localhost:3000/api';
-
+const API_BASE_URL = 'https://rcvj-company.onrender.com/api';/* 'http://localhost:3000/api';
+ */
 function getToken() {
     return localStorage.getItem('auth_token'); // this matches your login.js
 }

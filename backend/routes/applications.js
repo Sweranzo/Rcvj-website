@@ -100,6 +100,12 @@ router.post('/apply', upload.single('resume'), async (req, res) => {
             });
         }
 
+        console.log('📁 File saved:', {
+    filename: req.file.filename,
+    path: req.file.path,
+    size: req.file.size
+});
+
         const applicationId = "APP" + Date.now();
 
         const saveQuery = `
@@ -145,6 +151,7 @@ router.post('/apply', upload.single('resume'), async (req, res) => {
 
         res.status(500).json({ error: 'Failed to save application' });
     }
+    
 });
 
 // ----------------------------------------------

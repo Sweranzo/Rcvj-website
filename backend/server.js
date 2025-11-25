@@ -6,6 +6,10 @@ require('dotenv').config();
 
 const app = express();
 
+// Serve uploaded files
+app.use('/uploads', express.static('uploads'));
+//
+
 app.use(cors({
     origin: ['https://subtle-swan-ff6440.netlify.app', 'http://localhost:3000'],
     credentials: true

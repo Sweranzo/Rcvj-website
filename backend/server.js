@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const setupRoutes = require('./routes/setup');
+const setupV2Routes = require('./routes/setup-v2');
 require('dotenv').config();
 
 const app = express();
@@ -29,6 +30,7 @@ app.use((req, res, next) => {
 });
 
 // Routes
+app.use('/api/setup', setupV2Routes);
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/jobs', require('./routes/jobs'));
 app.use('/api/applications', require('./routes/applications'));

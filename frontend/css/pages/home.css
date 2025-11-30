@@ -10,11 +10,32 @@
     }
 
     .hero-content h1 {
-        color: var(--white);
-        font-size: 3.5rem;
-        margin-bottom: 1.5rem;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(45deg, #fff, #ffd700, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200% 200%;
+    animation: textShine 3s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+   @keyframes textShine {
+    0%, 100% {
+        background-position: 0% 50%;
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
     }
+    50% {
+        background-position: 100% 50%;
+        text-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+    }
+}
+
+.fade-in {
+    opacity: 1 !important;
+}
 
     .hero-content p {
         font-size: 1.3rem;
@@ -54,9 +75,13 @@
     .hero-overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(rgba(3, 35, 95, 0.658),rgba(243, 119, 4, 0.397));
+        /* background: linear-gradient(rgba(3, 35, 95, 0.658),rgba(243, 119, 4, 0.397)); */
+         background: rgba(0, 0, 0, 0.521);
+        
         z-index: -1;
     }
+    
+
 
     /* =============================
     JOB SLIDER
@@ -99,6 +124,7 @@
         100% { filter: drop-shadow(0 0 30px var(--secondary-color)); }
     }
 
+ 
     /* =============================
     TYPEWRITER
     ============================= */
@@ -136,6 +162,11 @@
         50% { border-color: transparent; }
     }
 
+    
+  
+
+
+
     /* =============================
     FEATURES SECTION
     ============================= */
@@ -158,14 +189,27 @@
  
     .features .container { position: relative; z-index: 2; }
 
-    .section-title {
+    .section-title, .stats-title{
         text-align: center;
         font-size: 2.3rem;
         font-weight: 700;
         margin-bottom: 40px;
-        color: var(--secondary-color);
+       
+     
     }
 
+    .stats-title {
+         background: linear-gradient(45deg, #fff, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textGlow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes textGlow {
+    from { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3)); }
+    to { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6)); }
+}
     .features-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -228,10 +272,37 @@
     /* =============================
     STATS SECTION
     ============================= */
+
+    
     .stats {
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        color: var(--white);
+    background:linear-gradient(135deg, #291571 0%, #e67415 50%, #291571 100%);
+    color: var(--white);
+    background-size: 400% 400%;
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: gradientShift 8s ease infinite;
     }
+
+    .stats::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(230, 116, 21, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(41, 21, 113, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
 
     .stats-grid {
         display: grid;
@@ -244,6 +315,7 @@
         font-size: 3rem;
         color: var(--white);
         margin-bottom: 0.5rem;
+       
     }
 
     /* =============================
@@ -317,3 +389,23 @@
         0% { box-shadow: 0 0 10px rgba(255,255,255,0.7); }
         50% { box-shadow: 0 0 22px rgba(255,255,255,0.7); }
     }
+
+   
+    /* Responsive */
+@media (max-width: 768px) {
+
+     #typewriter {
+        border-right: none;
+        white-space: normal;
+        overflow: hidden;
+        display: inline-block;
+        font-weight: 700;
+        animation: caretBlink 0.7s infinite;
+        min-height: 250px;
+        
+    }
+
+    .hero-content h1 {
+    font-size: 3.4rem;
+    }
+}

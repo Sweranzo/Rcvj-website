@@ -21,6 +21,7 @@
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="jobs.html" class="active">Jobs</a></li>
                 <li><a href="about.html">About</a></li>
+                <li><a href="partners.html">Partners</a></li>
                 <li><a href="login.html" class="login-btn">Login</a></li>
             </ul>
             <div class="menu-toggle">
@@ -33,66 +34,98 @@
     <section class="page-header">
         <div class="container">
             <h1>Available Job Positions</h1>
-            <p>Find your next career opportunity with our trusted company partners</p>
-        </div>
-
-     <!-- partners -->   
-        <section class="partners-section">
-<h2 class="partners-title">Our Partners</h2>
-
-<div class="partners-slider">
-<div class="slide-track">
-<!-- Duplicate logos for seamless infinite scrolling -->
-<div class="slide"><img src="../images/7-eleven.png" alt="Partner 1"></div>
-<div class="slide"><img src="../images/coffee.png" alt="Partner 2"></div>
-<div class="slide"><img src="../images/lpu-logo.png" alt="Partner 3"></div>
-<div class="slide"><img src="../images/waltermart-logo.png" alt="Partner 4"></div>
-<div class="slide"><img src="../images/sjg-logo.png" alt="Partner 5"></div>
-<div class="slide"><img src="../images/science-logo.png" alt="Partner 5"></div>
-
-
-<!-- Duplicates for smooth looping -->
-<div class="slide"><img src="../images/7-eleven.png" alt="Partner 1"></div>
-<div class="slide"><img src="../images/coffee.png" alt="Partner 2"></div>
-<div class="slide"><img src="../images/lpu-logo.png" alt="Partner 3"></div>
-<div class="slide"><img src="../images/waltermart-logo.png" alt="Partner 4"></div>
-<div class="slide"><img src="../images/sjg-logo.png" alt="Partner 5"></div>
-<div class="slide"><img src="../images/science-logo.png" alt="Partner 5"></div>
-</div>
-</div>
-</section>
-<div class="png-emoji-container">
-<!-- Eyes placed ON TOP of the PNG -->
-<div class="png-eye png-left-eye"><div class="png-pupil"></div></div>
-<div class="png-eye png-right-eye"><div class="png-pupil"></div></div>
-</div>
- </section>
-
-    <!-- Job Filters -->
-    <section class="job-filters">
-        <div class="container">
-            <div class="filter-grid">
-                <div class="filter-group">
-                    <input type="text" id="search-title" placeholder="Job title or keyword...">
+             <!-- Motivational Character Section -->
+<section class="motivational-section">
+    <div class="container">
+        <div class="character-container">
+            <!-- Animated Character -->
+            <div class="animated-character">
+                <div class="character-body">
+                    <div class="character-head">
+                        <div class="character-face">
+                            <div class="character-eyes">
+                                <div class="eye left-eye"></div>
+                                <div class="eye right-eye"></div>
+                            </div>
+                            <div class="character-mouth"></div>
+                        </div>
+                    </div>
+                    <div class="character-torso"></div>
                 </div>
-                <div class="filter-group">
-                    <input type="text" id="search-location" placeholder="Location...">
+                
+                <!-- Thought Bubble -->
+                <div class="thought-bubble">
+                    <div class="bubble-content">
+                        <span class="bubble-text" id="bubbleMessage">What are you waiting for?</span>
+                    </div>
+                    <div class="bubble-tail"></div>
                 </div>
-                <div class="filter-group">
-                    <select id="job-type">
-                        <option value="">All Job Types</option>
-                        <option value="full-time">Full Time</option>
-                        <option value="part-time">Part Time</option>
-                        <option value="contract">Contract</option>
-                        <option value="temporary">Temporary</option>
-                    </select>
-                </div>
-                <button class="btn btn-primary" id="search-btn">
-                    <i class="fas fa-search"></i> Search
-                </button>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="cta-content">
+                <h3>Ready to Start Your Journey?</h3>
+                <p>Join thousands who found their dream career through RCVJ</p>
+                <a href="#job-listings" class="cta-btn">
+                    <i class="fas fa-briefcase"></i>
+                    Browse Jobs Now
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+            <p>Find your next career opportunity with our trusted company partners</p>
+        </div>
+ </section>
+
+  
+  
+    <!-- Advanced Job Filters -->
+<section class="job-filters-modern">
+    <div class="container">
+        <div class="filters-wrapper">
+            <div class="filter-card">
+                <div class="filter-header">
+                    <i class="fas fa-sliders-h"></i>
+                    <h3>Refine Your Search</h3>
+                </div>
+                <div class="filter-grid-advanced">
+                    <div class="filter-group-modern">
+                        <div class="input-with-icon">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="search-title" placeholder="Job title, keywords, or company...">
+                        </div>
+                    </div>
+                    <div class="filter-group-modern">
+                        <div class="input-with-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <input type="text" id="search-location" placeholder="City, state, or remote...">
+                        </div>
+                    </div>
+                    <div class="filter-group-modern">
+                        <div class="select-with-icon">
+                            <i class="fas fa-briefcase"></i>
+                            <select id="job-type">
+                                <option value="">All Job Types</option>
+                                <option value="full-time">Full Time</option>
+                                <option value="part-time">Part Time</option>
+                                <option value="contract">Contract</option>
+                                <option value="temporary">Temporary</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="search-btn-modern" id="search-btn">
+                        <span class="btn-content">
+                            <i class="fas fa-search"></i>
+                            <span>Search Jobs</span>
+                        </span>
+                        <div class="btn-shine"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Job Listings -->
     <section class="job-listings section-padding">
@@ -117,6 +150,29 @@
             </div>
         </div>
     </section>
+
+    <!-- tweets-->
+       <!-- Dynamic Tweets Section -->
+<section class="dynamic-tweets-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Real-Time Success Stories</h2>
+            <p>Live updates from our community</p>
+        </div>
+        
+        <div class="tweets-container">
+            <!-- Tweets will be dynamically generated here -->
+        </div>
+        
+        <div class="tweets-controls">
+            <button class="tweet-btn" id="shuffleTweets">
+                <i class="fas fa-random"></i>
+                Show New Stories
+            </button>
+        </div>
+    </div>
+</section>
+
 
     <!-- Footer -->
     <footer class="footer">

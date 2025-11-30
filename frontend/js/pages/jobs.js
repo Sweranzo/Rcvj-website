@@ -39,36 +39,38 @@ class JobsManager {
     }
 
     setupEventListeners() {
-        // Search button
-        document.getElementById('search-btn').addEventListener('click', () => {
-            this.applyFilters();
-        });
+    // Search button - manual filtering
+    document.getElementById('search-btn').addEventListener('click', () => {
+        // Update currentFilters from input values
+        this.currentFilters.title = document.getElementById('search-title').value;
+        this.currentFilters.location = document.getElementById('search-location').value;
+        this.currentFilters.jobType = document.getElementById('job-type').value;
+        this.applyFilters();
+    });
 
-        // Enter key in search fields
-        document.getElementById('search-title').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.applyFilters();
-        });
-
-        document.getElementById('search-location').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') this.applyFilters();
-        });
-
-        // Real-time filtering on input change
-        document.getElementById('search-title').addEventListener('input', (e) => {
+    // Enter key support
+    document.getElementById('search-title').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
             this.currentFilters.title = e.target.value;
             this.applyFilters();
-        });
+        }
+    });
 
-        document.getElementById('search-location').addEventListener('input', (e) => {
+    document.getElementById('search-location').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
             this.currentFilters.location = e.target.value;
             this.applyFilters();
-        });
+        }
+    });
 
-        document.getElementById('job-type').addEventListener('change', (e) => {
-            this.currentFilters.jobType = e.target.value;
-            this.applyFilters();
-        });
-    }
+    // Remove all real-time input event listeners
+    // Only keep change listener for select (optional)
+    document.getElementById('job-type').addEventListener('change', (e) => {
+        // Optional: if you want dropdown to work immediately
+        this.currentFilters.jobType = e.target.value;
+        this.applyFilters();
+    });
+}
 
     applyFilters() {
         const titleFilter = this.currentFilters.title.toLowerCase();
@@ -228,25 +230,225 @@ document.addEventListener('DOMContentLoaded', () => {
     window.jobsManager = new JobsManager();
 });
 
-//follower//
-const pngPupils = document.querySelectorAll('.png-pupil');
-const pngEmojiBox = document.querySelector('.png-emoji-container').getBoundingClientRect();
+//bubbles effect//
+// Modern Dynamic Tweets
+class DynamicTweets {
+    constructor() {
+        this.tweets = [
+            {
+                username: "CareerSuccess",
+                handle: "@JobSeeker123",
+                avatar: "🚀",
+                message: "Just landed my dream job through RCVJ! The process was smooth and the support was incredible. Highly recommend!",
+                likes: 12,
+                retweets: 3,
+                time: "2h ago"
+            },
+            {
+                username: "TechRecruiter",
+                handle: "@HiringPro",
+                avatar: "💼",
+                message: "As an HR manager, I'm impressed with RCVJ's quality of candidates. They really understand what companies need.",
+                likes: 24,
+                retweets: 8,
+                time: "4h ago"
+            },
+            {
+                username: "CareerGrowth",
+                handle: "@AmbitiousPro",
+                avatar: "⭐",
+                message: "Switched from retail to tech in 3 months! RCVJ's career guidance made all the difference. Life-changing!",
+                likes: 18,
+                retweets: 5,
+                time: "1d ago"
+            },
+            {
+                username: "JobHunter",
+                handle: "@FindMyPath",
+                avatar: "🎯",
+                message: "Multiple offers in just 2 weeks! The interview preparation and resume tips were game-changers.",
+                likes: 15,
+                retweets: 4,
+                time: "6h ago"
+            },
+            {
+                username: "HRManager",
+                handle: "@TalentAcquisition",
+                avatar: "🏢",
+                message: "Our company has partnered with RCVJ for 2 years. Consistent quality and professional service every time.",
+                likes: 31,
+                retweets: 12,
+                time: "3h ago"
+            },
+            {
+                username: "CareerChanger",
+                handle: "@NewBeginnings",
+                avatar: "✨",
+                message: "From hospitality to IT support! RCVJ believed in me when no one else did. Forever grateful!",
+                likes: 22,
+                retweets: 7,
+                time: "8h ago"
+            }
+        ];
+        
+        this.init();
+    }
+    
+    init() {
+        this.renderTweets();
+        this.setupShuffle();
+    }
+    
+    renderTweets() {
+        const container = document.querySelector('.tweets-container');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        
+        // Shuffle and take 3 random tweets
+        const shuffled = [...this.tweets].sort(() => 0.5 - Math.random());
+        const selectedTweets = shuffled.slice(0, 3);
+        
+        selectedTweets.forEach((tweet, index) => {
+            const tweetCard = this.createTweetCard(tweet, index);
+            container.appendChild(tweetCard);
+        });
+    }
+    
+    createTweetCard(tweet, index) {
+        const card = document.createElement('div');
+        card.className = 'tweet-card';
+        card.style.animationDelay = `${index * 0.2}s`;
+        
+        card.innerHTML = `
+            <div class="tweet-header">
+                <div class="tweet-avatar">${tweet.avatar}</div>
+                <div class="tweet-user-info">
+                    <h4>${tweet.username}</h4>
+                    <span>${tweet.handle}</span>
+                </div>
+            </div>
+            <p class="tweet-message">${tweet.message}</p>
+            <div class="tweet-stats">
+                <div class="tweet-stat">
+                    <i class="fas fa-heart"></i>
+                    <span>${tweet.likes}</span>
+                </div>
+                <div class="tweet-stat">
+                    <i class="fas fa-retweet"></i>
+                    <span>${tweet.retweets}</span>
+                </div>
+            </div>
+            <div class="tweet-time">
+                <i class="far fa-clock"></i>
+                <span>${tweet.time}</span>
+            </div>
+        `;
+        
+        return card;
+    }
+    
+    setupShuffle() {
+        const shuffleBtn = document.getElementById('shuffleTweets');
+        if (shuffleBtn) {
+            shuffleBtn.addEventListener('click', () => {
+                this.renderTweets();
+                
+                // Add button feedback
+                shuffleBtn.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    shuffleBtn.style.transform = '';
+                }, 150);
+            });
+        }
+    }
+}
 
-
-document.addEventListener('mousemove', (e) => {
-const centerX = pngEmojiBox.left + pngEmojiBox.width / 2;
-const centerY = pngEmojiBox.top + pngEmojiBox.height / 2;
-
-
-const angle = Math.atan2(e.clientY - centerY, e.clientX - centerX);
-
-
-const offsetX = Math.cos(angle) * 7;
-const offsetY = Math.sin(angle) * 7;
-
-
-pngPupils.forEach(p => {
-p.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    new DynamicTweets();
 });
-});
 
+
+//person thinking //
+// Motivational Messages Manager
+class MotivationalCharacter {
+    constructor() {
+        this.messages = [
+            "What are you waiting for?",
+            "Your dream job is waiting!",
+            "Apply now and transform your career!",
+            "Don't just dream it, achieve it!",
+            "Great opportunities are waiting!",
+            "Take the first step today!",
+            "Your future self will thank you!",
+            "New career, new possibilities!",
+            "Make your move now!",
+            "Success starts with action!",
+            "Your perfect job is one click away!",
+            "Unlock your potential today!",
+            "Career happiness awaits!",
+            "Start your journey now!",
+            "Amazing jobs are waiting for you!"
+        ];
+        
+        this.init();
+    }
+    
+    init() {
+        this.startMessageCycle();
+        this.setupInteractions();
+    }
+    
+    startMessageCycle() {
+        // Show first message immediately
+        
+        this.showRandomMessage();
+        
+        // Change message every 4 seconds
+        setInterval(() => {
+            this.showRandomMessage();
+        }, 4000);
+    }
+    
+    showRandomMessage() {
+        const bubble = document.getElementById('bubbleMessage');
+        if (!bubble) return;
+        
+        // Fade out
+        bubble.style.opacity = '0';
+        bubble.style.transform = 'translateY(10px)';
+        
+        setTimeout(() => {
+            // Get random message
+            const randomMessage = this.messages[Math.floor(Math.random() * this.messages.length)];
+            bubble.textContent = randomMessage;
+            
+            // Fade in
+            bubble.style.opacity = '1';
+            bubble.style.transform = 'translateY(0)';
+        }, 300);
+    }
+    
+    setupInteractions() {
+        const character = document.querySelector('.animated-character');
+        if (character) {
+            character.addEventListener('click', () => {
+                this.showRandomMessage();
+                
+                // Add click feedback
+                character.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    character.style.transform = '';
+                }, 150);
+            });
+            
+            character.style.cursor = 'pointer';
+        }
+    }
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    new MotivationalCharacter();
+});

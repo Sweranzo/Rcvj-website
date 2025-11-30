@@ -1,26 +1,49 @@
 /* About Page Styles */
 .page-header {
-    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-    background-size: 300% 300%;
-    animation: gradientMove 8s ease infinite;
-    color: var(--white);
-    padding: 120px 0 60px;
+    background: linear-gradient(135deg, #291571 0%, #e67415 50%, #291571 100%);
+    background-size: 400% 400%;
+    color: white;
+    padding: 120px 0;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: gradientShift 8s ease infinite;
 }
 
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(230, 116, 21, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(41, 21, 113, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    animation: float 6s ease-in-out infinite;
 }
-
 
 .page-header h1 {
-    color: var(--white);
-    font-size: 3rem;
-    margin-bottom: 1rem;
+     font-size: 4rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(45deg, #fff, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textGlow 3s ease-in-out infinite alternate;
+    
 }
 
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes textGlow {
+    from { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3)); }
+    to { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6)); }
+}
 .page-header p {
     font-size: 1.2rem;
     opacity: 0.9;

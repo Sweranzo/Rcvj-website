@@ -1,11 +1,21 @@
 /* Auth Pages Styles */
 .auth-section {
-    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+    background: linear-gradient(135deg, #291571 0%, #e67415 50%, #291571 100%);
     min-height: calc(100vh - 70px);
     display: flex;
     align-items: center;
     padding: 100px 0 50px;
+     overflow: hidden;
+    animation: gradientShift 8s ease infinite;
+    position: relative;
+    background-size: 400% 400%;
 }
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
 
 .auth-container {
     display: grid;

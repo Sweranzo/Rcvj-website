@@ -1,6 +1,6 @@
 // API Base URL
-const API_BASE_URL = 'https://rcvj-company.onrender.com/api';/* 'http://localhost:3000/api'; */ 
-
+const API_BASE_URL = 'https://rcvj-company.onrender.com/api';/* 'http://localhost:3000/api'; 
+ */
 class AuthManager {
     constructor() {
         this.init();

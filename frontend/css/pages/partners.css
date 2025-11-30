@@ -1,0 +1,459 @@
+/*partners*/
+/* Enhanced Categorized Partners Page */
+/* Replace your current partners-hero CSS with this: */
+.partners-hero {
+    background: linear-gradient(135deg, #291571 0%, #e67415 50%, #291571 100%);
+    background-size: 400% 400%;
+    color: white;
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: gradientShift 8s ease infinite;
+}
+
+.partners-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(230, 116, 21, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(41, 21, 113, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    animation: float 6s ease-in-out infinite;
+}
+
+.partners-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.partners-hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(45deg, #fff, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textGlow 3s ease-in-out infinite alternate;
+}
+
+.partners-hero p {
+    font-size: 1.4rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+}
+
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+    animation: fadeInUp 1s ease;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(45deg, #ffd700, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 1rem;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Animations */
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes textGlow {
+    from { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3)); }
+    to { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6)); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating particles */
+.floating-particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: floatParticle 15s linear infinite;
+}
+
+@keyframes floatParticle {
+    0% { transform: translateY(100vh) rotate(0deg); }
+    100% { transform: translateY(-100px) rotate(360deg); }
+}
+
+.partners-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.partner-category {
+    margin-bottom: 4rem;
+}
+
+.partner-category:last-child {
+    margin-bottom: 0;
+}
+
+.category-title {
+    color: #291571;
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.category-title i {
+    color: #e67415;
+}
+
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.partner-card {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(41, 21, 113, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+
+.partner-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(41, 21, 113, 0.15);
+    border-color: #e67415;
+}
+
+.partner-logo {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #291571, #e67415);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.partner-logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.partner-card:hover .partner-logo {
+    transform: scale(1.1);
+    box-shadow: 0 10px 25px rgba(230, 116, 21, 0.3);
+}
+
+.partner-logo i {
+    font-size: 2.2rem;
+    color: white;
+}
+
+.partner-card h3 {
+    color: #291571;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.partner-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.partner-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #291571, #e67415);
+    color: white;
+    padding: 0.4rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .partners-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .partners-hero p {
+        font-size: 1.1rem;
+    }
+    
+    .category-title {
+        font-size: 1.8rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .partners-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .partner-card {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* Partner Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 2rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.partner-modal {
+    background: white;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.4s ease;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close-btn:hover {
+    background: #e67415;
+    color: white;
+    transform: rotate(90deg) scale(1.1);
+}
+
+
+.partner-modal-header {
+    background: linear-gradient(135deg, #291571, #e67415);
+    color: white;
+    padding: 2.5rem 2rem 2rem;
+    border-radius: 20px 20px 0 0;
+    position: relative;
+}
+
+.partner-modal-header h2 {
+    margin: 0 0 1rem 0;
+    font-size: 2rem;
+}
+
+.partner-modal-content {
+    padding: 2rem;
+}
+
+.partner-description {
+    margin-bottom: 2rem;
+}
+
+.partner-description p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+    margin: 0;
+}
+
+.partner-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.detail-item:hover {
+    background: #e9ecef;
+}
+
+.detail-item i {
+    color: #e67415;
+    font-size: 1.2rem;
+    margin-top: 0.2rem;
+    width: 20px;
+}
+
+.detail-item div {
+    flex: 1;
+}
+
+.detail-item strong {
+    display: block;
+    color: #291571;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.detail-item span, .detail-item a {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.detail-item a {
+    color: #e67415;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.detail-item a:hover {
+    color: #291571;
+    text-decoration: underline;
+}
+
+.partner-modal-footer {
+    padding: 0 2rem 2rem;
+    text-align: center;
+}
+
+.partner-modal-footer .btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Make partner cards clickable */
+.partner-card {
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.partner-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+/* Responsive modal */
+@media (max-width: 768px) {
+    .modal-overlay {
+        padding: 1rem;
+    }
+
+    
+    
+    .partner-modal {
+        max-height: 95vh;
+    }
+    
+    .partner-modal-header {
+        padding: 2rem 1.5rem 1.5rem;
+    }
+    
+    .partner-modal-header h2 {
+        font-size: 1.6rem;
+    }
+    
+    .partner-modal-content {
+        padding: 1.5rem;
+    }
+    
+    .detail-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+}

@@ -90,31 +90,5 @@ function typeLoop() {
 typeLoop();
 
 
-// loading screen //
-
-   let progress = 0;
-        const percentageEl = document.getElementById('percentage');
-        const progressFill = document.getElementById('progressFill');
-        const loadingScreen = document.getElementById('loadingScreen');
-
-        // Simulate loading progress
-        const interval = setInterval(() => {
-            progress += Math.random() * 15;
-            if (progress > 100) progress = 100;
-            
-            percentageEl.textContent = Math.round(progress) + '%';
-            progressFill.style.width = progress + '%';
-            
-            if (progress === 100) {
-                clearInterval(interval);
-                setTimeout(() => {
-                    loadingScreen.classList.add('fade-out');
-                    setTimeout(() => {
-                        loadingScreen.style.display = 'none';
-                    }, 500);
-                }, 500);
-            }
-        }, 300);
-
 
   

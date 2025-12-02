@@ -84,9 +84,13 @@ class JobDetailsManager {
         const formData = new FormData(form);
 
         // extra job info
-formData.append("job_title", document.getElementById("apply-job-title").value);
+/* formData.append("job_title", document.getElementById("apply-job-title").value);
 formData.append("job_company", document.getElementById("apply-job-company").value);
-formData.append("job_id", document.getElementById("apply-job-id").value);
+formData.append("job_id", document.getElementById("apply-job-id").value); */
+
+formData.append("jobTitle", document.getElementById("apply-job-title").value);
+formData.append("jobCompany", document.getElementById("apply-job-company").value);
+formData.append("jobId", document.getElementById("apply-job-id").value);
 
 // Debug: Check what's in formData
 console.log('FormData contents:');

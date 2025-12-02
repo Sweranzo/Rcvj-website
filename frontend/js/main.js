@@ -40,6 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+//typewriter
+
+if (window.location.pathname === '/' || 
+    window.location.pathname.includes('index.html') ||
+    document.getElementById("typewriter")) {
+
 
 const phrases = [
     "Find Your Next Career",
@@ -87,8 +93,9 @@ function typeLoop() {
     setTimeout(typeLoop, isDeleting ? deleteSpeed : speed);
 }
 
-typeLoop();
-
-
+     if (typewriter) {
+        typeLoop();
+    }
+}
 
   

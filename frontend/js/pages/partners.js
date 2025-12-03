@@ -1,3 +1,7 @@
+console.log("Partners page JS loaded");
+document.addEventListener('click', function(e) {
+    console.log('Clicked:', e.target);
+});
 // Partners Modal Functionality
 class PartnersManager {
     constructor() {

@@ -98,4 +98,13 @@ function typeLoop() {
     }
 }
 
-  
+  //lotie animations 
+    if (typeof lottie !== "undefined") {
+     lottie.loadAnimation({
+      container: document.getElementById("bird"),
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      path: "bird.json",
+    });
+}
